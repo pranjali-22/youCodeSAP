@@ -110,13 +110,13 @@ const LogIn = () => {
                 >
                     <VStack spacing={10}>
                         <Input
-                            placeholder="firstName"
+                            placeholder="First Name"
                             name="firstName"
                             value={userDetails.firstName}
                             onChange={handleInputChange}
                         />
                         <Input
-                            placeholder="lastName"
+                            placeholder="Last Name"
                             name="lastName"
                             value={userDetails.lastName}
                             onChange={handleInputChange}

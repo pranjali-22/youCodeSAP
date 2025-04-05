@@ -60,7 +60,15 @@ function MakeDonation() {
   };
 
   return (
-    <Box maxW="600px" mx="auto" mt={10} p={6} borderWidth="1px" borderRadius="lg" shadow="md">
+    <Box
+      bg="white"
+      minHeight="100vh"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+    >
+    <Box maxW="600px" mx="auto" mt={10} p={6} borderWidth="1px" borderRadius="lg" shadow="md"
+    bg="white" >
       <Heading mb={6}>Make a Donation</Heading>
       <form onSubmit={handleSubmit}>
         <VStack spacing={4}>
@@ -110,6 +118,7 @@ function MakeDonation() {
           </Button>
         </VStack>
       </form>
+    </Box>
     </Box>
   );
 }

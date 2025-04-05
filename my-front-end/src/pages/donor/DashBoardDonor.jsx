@@ -32,7 +32,7 @@ function DashBoardDonor() {
                 <Heading as="h1" size="xl">Dashboard Donor</Heading>
                 
                 {/* Button to make a donation */}
-                <Button onClick={handleMakeDonation} colorScheme="blue" size="lg">
+                <Button onClick={handleMakeDonation} bg="#F58514" color="white" size="lg">
                     Make Donation
                 </Button>
                 

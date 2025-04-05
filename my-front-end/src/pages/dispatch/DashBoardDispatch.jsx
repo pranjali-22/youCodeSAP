@@ -59,7 +59,7 @@ function DashBoardDispatch() {
                             shadow="md" 
                             borderWidth="1px" 
                             width="full" 
-                            bg={selectedDonations.includes(donation.id) ? 'teal.100' : 'white'} // Highlight selected donation
+                            bg={selectedDonations.includes(donation.id) ? '#F58514' : 'white'}
                         >
                             <Checkbox 
                                 isChecked={selectedDonations.includes(donation.id)} 
