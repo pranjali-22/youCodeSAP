@@ -2,34 +2,39 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { Route, Routes } from 'react-router-dom';
+import LogInDonor from './pages/donor/LogInDonor.jsx';
+import LogInDispatch from './pages/dispatch/LogInDispatch.jsx';
+import DashBoardDispatch from './pages/dispatch/DashBoardDispatch.jsx';
+import DashBoardDonor from './pages/donor/DashBoardDonor.jsx';
+import MakeDonation from './pages/donor/MakeDonation.jsx';
+import DonationHistory from './pages/donor/DonationHistory.jsx';
+import Navbar from './components/Navbar.jsx';
+//var _s = $RefreshSig$();
+import { Box, Container, Heading, Input, Button, useToast, VStack, useColorModeValue } from "@chakra-ui/react";
+import axios from "axios";
+import Home from './pages/Home.jsx';
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      
+      <Box minH={"100vh"} bg = {useColorModeValue("gray.100", "gray.900")}>
+        <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} /> 
+            <Route path="/loginDispatch" element={<LogInDispatch />} /> 
+            <Route path="/loginDonor" element={<LogInDonor />} /> 
+            <Route path="/dashboardDispatch" element={<DashBoardDispatch />} /> 
+            <Route path="/dashboardDonor" element={<DashBoardDonor />} />
+            <Route path="/DonationHistory" element={<DonationHistory />} />
+            <Route path="/MakeDonation" element={<MakeDonation />} />
+        </Routes>
+      </Box>
     </>
   )
 }
 
-export default App
+export default App;

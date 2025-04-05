@@ -27,34 +27,15 @@ const Navbar = () => {
           bgGradient={"linear(to-r, cyan.400, blue.500)"}
           bgClip={"text"}
         >
-          <Link to = {"/"}> Refrigerator </Link>
         </Text>
         <HStack spacing ={2} alignItems={"center"}>
         
 
-          <Link to = {"/addFood"}>
+          {/* <Link to = {"/LogIn"}>
           <Button>
             <PlusSquareIcon fontSize={20} />
           </Button>
-          </Link>
-
-          <Link to = {"/removeFood"}>
-          <Button>
-            <MinusIcon fontSize={20} />
-          </Button>
-          </Link>
-
-          <Link to={"/user"}>
-            <Button>
-              <MdSettings fontSize={20} />
-            </Button>
-          </Link>
-
-          <Link to={"/AskPage"}>
-            <Button>
-              <LuSearch fontSize={20} />
-            </Button>
-          </Link>
+          </Link> */}
 
 
           <Button onClick={toggleColorMode}>

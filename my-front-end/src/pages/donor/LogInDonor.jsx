@@ -1,15 +1,18 @@
 import { useState } from 'react';
 import { Box, Container, Heading, Input, Button, useToast, VStack, useColorModeValue } from '@chakra-ui/react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const LogIn = () => {
     const [userDetails, setUserDetails] = useState({
-        name: "",
+        firstName: "",
+        lastName: "",
         email: "",
         password: ""
     });
 
     const toast = useToast();
+    const navigate = useNavigate();
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -20,9 +23,9 @@ const LogIn = () => {
     };
 
     const handleSubmit = async () => {
-        const { name, email, password, refrigeratorId } = userDetails;
+        const {firstName, lastName, email, password} = userDetails;
 
-        if (!name || !email || !password || !refrigeratorId) {
+        if (!firstName || !lastName || !email || !password) {
             toast({
                 title: "Error",
                 description: "All fields are required.",
@@ -31,11 +34,13 @@ const LogIn = () => {
             });
             return;
         }
+        navigate('/dashboardDonor'); //TODO change w backend
 
         try {
             // TODO BACKEND
-            const response = await axios.post("http://localhost:5050/api/user/", {
-                name, 
+            const response = await axios.post("http://localhost:5000/api/user/", {
+                firstName,
+                lastName, 
                 email, 
                 password
             });
@@ -51,10 +56,14 @@ const LogIn = () => {
             
                 // Reset form after success
                 setUserDetails({ 
-                    name: '', 
+                    firstName: '',
+                    lastName: '', 
                     email: '',
                     password: ''
                 });
+                
+                //navigate('/dashboardDonor');
+                
             } else {
                 toast({
                     title: 'Error',
@@ -90,7 +99,7 @@ const LogIn = () => {
         <Container maxW="container.sm">
             <VStack spacing={12}>
                 <Heading as="h1" size="2xl" textAlign="center" mb={8}>
-                    Create New User
+                Log in as donor
                 </Heading>
                 <Box
                     w="300px"
@@ -101,9 +110,15 @@ const LogIn = () => {
                 >
                     <VStack spacing={10}>
                         <Input
-                            placeholder="Name"
-                            name="name"
-                            value={userDetails.name}
+                            placeholder="firstName"
+                            name="firstName"
+                            value={userDetails.firstName}
+                            onChange={handleInputChange}
+                        />
+                        <Input
+                            placeholder="lastName"
+                            name="lastName"
+                            value={userDetails.lastName}
                             onChange={handleInputChange}
                         />
                         <Input
@@ -121,7 +136,7 @@ const LogIn = () => {
                             onChange={handleInputChange}
                         />
                         <Button colorScheme="blue" onClick={handleSubmit} w="full">
-                            Create User
+                            Log in
                         </Button>
                     </VStack>
                 </Box>
@@ -130,4 +145,4 @@ const LogIn = () => {
     );
 };
 
-export default UserPage;
+export default LogIn;
