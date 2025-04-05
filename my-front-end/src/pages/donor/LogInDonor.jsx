@@ -87,7 +87,7 @@ const LogIn = () => {
             } else {
                 toast({
                     title: 'Error',
-                    description: 'Something went wrong.',
+                    description: 'GOT ME.',
                     status: 'error',
                     isClosable: true,
                 });
@@ -135,7 +135,7 @@ const LogIn = () => {
                             value={userDetails.password}
                             onChange={handleInputChange}
                         />
-                        <Button colorScheme="blue" onClick={handleSubmit} w="full">
+                        <Button color="white" bg="#F8993A" onClick={handleSubmit} w="full" _hover={{ opacity: 0.5}}>
                             Log in
                         </Button>
                     </VStack>

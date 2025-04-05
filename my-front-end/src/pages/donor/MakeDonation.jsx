@@ -50,6 +50,7 @@ function MakeDonation() {
     } catch (error) {
       console.error("Error submitting donation:", error);
       toast({
+        //this error always happens, why?
         title: 'Submission failed',
         description: 'Please try again later.',
         status: 'error',
