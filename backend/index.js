@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const userRoutes = require('./routes/userRoutes'); // Import routes for user (for example)
-const donationRoutes = require('../models/donationRoutes');
+const donationRoutes = require('./routes/donationRoutes');
 
 
 dotenv.config(); // Load environment variables from .env file
