@@ -1,7 +1,7 @@
 // routes/donationRoutes.js
 const express = require('express');
 const router = express.Router();
-const Donation = require('./models/donation');
+const Donation = require('../models/Donation');
 
 // POST route to add a donation
 router.post('/add', async (req, res) => {
