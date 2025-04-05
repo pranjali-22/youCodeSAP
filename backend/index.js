@@ -6,6 +6,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const userRoutes = require('./routes/userRoutes'); // Import routes for user (for example)
+// const Donation = require('../models/Donation');
+
 
 dotenv.config(); // Load environment variables from .env file
 
@@ -26,12 +28,6 @@ mongoose.connect(process.env.MONGO_URI, {
   .then(() => console.log('MongoDB connected'))
   .catch((err) => console.log('Error connecting to MongoDB:', err));
 
-app.use('/api/donations', donationRoutes);
-
-// Connect to MongoDB
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('MongoDB connected'))
-    .catch((err) => console.log('Error connecting to MongoDB:', err));
 
 // Start the server
 const PORT = process.env.PORT || 5000;
