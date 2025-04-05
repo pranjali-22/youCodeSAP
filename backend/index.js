@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const userRoutes = require('./routes/userRoutes'); // Import routes for user (for example)
-// const Donation = require('../models/Donation');
+const donationRoutes = require('../models/donationRoutes');
 
 
 dotenv.config(); // Load environment variables from .env file
@@ -19,6 +19,7 @@ app.use(express.json()); // Parse incoming requests with JSON payloads
 
 // Use routes
 app.use('/api/users', userRoutes); // Add your user-related routes here
+app.use('/api/donation', donationRoutes);
 
 // Connect to MongoDB database
 mongoose.connect(process.env.MONGO_URI, {
