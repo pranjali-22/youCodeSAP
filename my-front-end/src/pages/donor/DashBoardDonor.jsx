@@ -65,7 +65,7 @@ function DashBoardDonor() {
           textAlign="left"
         >
           <Heading fontSize="lg" mb={2}>Your Impact 🌍</Heading>
-          <Text>Total CO₂e Saved: <strong>{estimatedCO2eSaved} kg</strong></Text>
+          <Text>Total CO₂e Saved: <strong>{estimatedCO2eSaved} lbs</strong></Text>
           <Text>Total Food Donated: <strong>{totalWeight} lbs</strong></Text>
         </Box>
 
