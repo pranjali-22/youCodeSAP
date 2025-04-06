@@ -33,7 +33,7 @@ router.post('/add', async (req, res) => {
 // GET route to fetch all donations
 router.get('/getDonations', async (req, res) => {
     try {
-        const donations = await Donation.find(); // You can add filters here if needed
+      const donations = await Donation.find().populate('pickedBy', 'firstName lastName');      // You can add filters here if needed
         res.status(200).json(donations);
     } catch (err) {
         res.status(500).json({ error: 'Error fetching donations', details: err });
@@ -42,7 +42,7 @@ router.get('/getDonations', async (req, res) => {
 
 router.put('/dispatch', async (req, res) => {
     try {
-      const { donationIds } = req.body; // expects an array of IDs
+      const { donationIds, dispatcherId } = req.body; // expects an array of IDs
   
       if (!Array.isArray(donationIds) || donationIds.length === 0) {
         return res.status(400).json({ message: 'No donation IDs provided' });
@@ -50,7 +50,7 @@ router.put('/dispatch', async (req, res) => {
   
       const result = await Donation.updateMany(
         { _id: { $in: donationIds } },
-        { $set: { dispatched: true } }
+        { $set: { dispatched: true, pickedBy: dispatcherId } }
       );
   
       res.json({ message: 'Dispatch updated successfully', updatedCount: result.modifiedCount });

@@ -59,6 +59,10 @@ const LogInDispatch = () => {
                     password: ''
                 });
 
+                const { user } = response.data;
+                localStorage.setItem("userId", user.id);
+                localStorage.setItem("firstName", user.name.split(" ")[0]);
+                localStorage.setItem("lastName", user.name.split(" ")[1]);
                 navigate('/dashboardDispatch');
 
             } else {

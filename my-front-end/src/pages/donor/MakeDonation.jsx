@@ -9,7 +9,7 @@ function MakeDonation() {
   const [formData, setFormData] = useState({
     userId: userID,
     perishable: true,
-    type: 'Produce',
+    type: 'bakery',
     quantity: '',
     expiryDate: '',
     location: ''
@@ -47,8 +47,8 @@ function MakeDonation() {
       // Clear the form after submission
       setFormData({
         userId: userID,
-        perishable: 'Yes',
-        type: 'Produce',
+        perishable: true,
+        type: 'bakery',
         quantity: '',
         expiryDate: '',
         location: ''

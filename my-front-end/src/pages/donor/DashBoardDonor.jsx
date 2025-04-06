@@ -148,9 +148,11 @@ function DashBoardDonor() {
                     <Text>Weight: {donation.quantity}lb</Text>
                     <Text>Expiry Date: {donation.expiryDate.split('T')[0]}</Text>
                     <Text>Location: {donation.location}</Text>
-                    {/* TODO 
-                    <Text>Picked up by: {donation.dispatcher}</Text>
-                    */}
+                    {donation.pickedBy && (
+                      <Text>
+                        Picked up by: {donation.pickedBy.firstName} {donation.pickedBy.lastName}
+                      </Text>
+                    )}
                   </Box>
                 ))}
               </Grid>

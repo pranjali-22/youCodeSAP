@@ -36,7 +36,12 @@ const donationSchema = new Schema({
     dispatched: {
         type: Boolean,
         default: false
-    }
+    },
+    pickedBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User', // references dispatcher (user model)
+        default: null
+    }  
 });
 
 // Create the Donation model

@@ -9,6 +9,7 @@ function DashBoardDispatch() {
     const navigate = useNavigate();
     const [donations, setDonations] = useState([]);
     const [selectedDonations, setSelectedDonations] = useState([]); // track selected
+    const dispatcherId = localStorage.getItem("userId");
     
     // get donations
     useEffect(() => {
@@ -50,7 +51,8 @@ function DashBoardDispatch() {
             //     selectedDonations
             // });
             await axios.put('http://localhost:5000/api/donations/dispatch', {
-                donationIds: selectedDonations
+                donationIds: selectedDonations,
+                dispatcherId
               });
         
         
