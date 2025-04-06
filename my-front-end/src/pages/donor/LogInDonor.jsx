@@ -5,8 +5,6 @@ import { useNavigate } from 'react-router-dom';
 
 const LogIn = () => {
     const [userDetails, setUserDetails] = useState({
-        firstName: "",
-        lastName: "",
         email: "",
         password: ""
     });
@@ -23,10 +21,10 @@ const LogIn = () => {
     };
 
     const handleSubmit = async () => {
-        const {firstName, lastName, email, password} = userDetails;
+        const {email, password} = userDetails;
         const type = "donor";
 
-        if (!firstName || !lastName || !email || !password) {
+        if (!email || !password) {
             toast({
                 title: "Error",
                 description: "All fields are required.",
@@ -35,14 +33,12 @@ const LogIn = () => {
             });
             return;
         }
-        //navigate('/dashboardDonor'); //TODO change w backend
+        navigate('/dashboardDonor'); //TODO change w backend
 
         
         try {
             // TODO BACKEND
-            const response = await axios.post("http://localhost:5000/api/users/register", {
-                firstName,
-                lastName, 
+            const response = await axios.post("http://localhost:5000/api/users/login", {
                 email, 
                 password,
                 type,
@@ -51,7 +47,7 @@ const LogIn = () => {
             if (response.status === 201) {
                 toast({
                     title: 'Success',
-                    description: 'User added successfully.',
+                    description: 'User logged in successfully.',
                     status: 'success',
                     isClosable: true,
                 });
@@ -59,8 +55,6 @@ const LogIn = () => {
             
                 // Reset form after success
                 setUserDetails({ 
-                    firstName: '',
-                    lastName: '', 
                     email: '',
                     password: ''
                 });
@@ -70,13 +64,13 @@ const LogIn = () => {
             } else {
                 toast({
                     title: 'Error',
-                    description: `Failed to add user. Status: ${response.status}`,
+                    description: `Failed to log in user. Status: ${response.status}`,
                     status: 'error',
                     isClosable: true,
                 });
             }
         } catch (error) {
-            console.error('Error adding user:', error);
+            console.error('Error loggin in user:', error);
             
             // Log error details for better debugging
             if (error.response) {
@@ -112,18 +106,6 @@ const LogIn = () => {
                     shadow="md"
                 >
                     <VStack spacing={10}>
-                        <Input
-                            placeholder="First Name"
-                            name="firstName"
-                            value={userDetails.firstName}
-                            onChange={handleInputChange}
-                        />
-                        <Input
-                            placeholder="Last Name"
-                            name="lastName"
-                            value={userDetails.lastName}
-                            onChange={handleInputChange}
-                        />
                         <Input
                             placeholder="Email"
                             name="email"

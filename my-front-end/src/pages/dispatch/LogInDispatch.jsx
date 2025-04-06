@@ -5,8 +5,6 @@ import { useNavigate } from 'react-router-dom';
 
 const LogInDispatch = () => {
     const [userDetails, setUserDetails] = useState({
-        firstName: "",
-        lastName: "",
         email: "",
         password: ""
     });
@@ -23,10 +21,10 @@ const LogInDispatch = () => {
     };
 
     const handleSubmit = async () => {
-        const {firstName, lastName, email, password} = userDetails;
+        const {email, password} = userDetails;
         const type = "dispatch";
 
-        if (!firstName || !lastName || !email || !password) {
+        if (!email || !password) {
             toast({
                 title: "Error",
                 description: "All fields are required.",
@@ -40,9 +38,7 @@ const LogInDispatch = () => {
 
         try {
             // TODO BACKEND
-            const response = await axios.post("http://localhost:5000/api/users/register", {
-                firstName,
-                lastName, 
+            const response = await axios.post("http://localhost:5000/api/users/login", {
                 email, 
                 password,
                 type,
@@ -51,7 +47,7 @@ const LogInDispatch = () => {
             if (response.status === 201) {
                 toast({
                     title: 'Success',
-                    description: 'User added successfully.',
+                    description: 'User logged in successfully.',
                     status: 'success',
                     isClosable: true,
                 });
@@ -59,8 +55,6 @@ const LogInDispatch = () => {
             
                 // Reset form after success
                 setUserDetails({ 
-                    firstName: '',
-                    lastName: '', 
                     email: '',
                     password: ''
                 });
@@ -70,7 +64,7 @@ const LogInDispatch = () => {
             } else {
                 toast({
                     title: 'Error',
-                    description: `Failed to add user. Status: ${response.status}`,
+                    description: `Failed tolog in user. Status: ${response.status}`,
                     status: 'error',
                     isClosable: true,
                 });
@@ -112,18 +106,6 @@ const LogInDispatch = () => {
                     shadow="md"
                 >
                     <VStack spacing={10}>
-                        <Input
-                            placeholder="First Name"
-                            name="firstName"
-                            value={userDetails.firstName}
-                            onChange={handleInputChange}
-                        />
-                        <Input
-                            placeholder="Last Name"
-                            name="lastName"
-                            value={userDetails.lastName}
-                            onChange={handleInputChange}
-                        />
                         <Input
                             placeholder="Email"
                             name="email"

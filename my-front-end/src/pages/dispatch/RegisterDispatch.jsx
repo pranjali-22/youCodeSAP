@@ -3,7 +3,7 @@ import { Box, Container, Heading, Input, Button, useToast, VStack, useColorModeV
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const LogInDispatch = () => {
+const RegisterDispatch = () => {
     const [userDetails, setUserDetails] = useState({
         firstName: "",
         lastName: "",
@@ -102,7 +102,7 @@ const LogInDispatch = () => {
         <Container maxW="container.sm">
             <VStack spacing={12}>
                 <Heading as="h1" size="2xl" textAlign="center" mb={8}>
-                    Log in as dispatcher
+                    Register as dispatcher
                 </Heading>
                 <Box
                     w="300px"
@@ -139,7 +139,7 @@ const LogInDispatch = () => {
                             onChange={handleInputChange}
                         />
                         <Button color="white" bg="#F8993A" onClick={handleSubmit} w="full" _hover={{ opacity: 0.3}}>
-                            Log in
+                            Register
                         </Button>
                     </VStack>
                 </Box>
@@ -148,4 +148,4 @@ const LogInDispatch = () => {
     );
 };
 
-export default LogInDispatch;
+export default RegisterDispatch;
