@@ -55,6 +55,10 @@ router.post('/login', async (req, res) => {
             return res.status(401).json({ error: 'Invalid email or password' });
         }
 
+        if (user.type != type) {
+            return res.status(401).json({ error: 'Wrong user type' });
+        }
+
         const isMatch = await user.comparePassword(password);
 
         if (!isMatch) {

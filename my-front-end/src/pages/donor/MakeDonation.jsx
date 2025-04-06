@@ -5,8 +5,9 @@ import {
 import axios from 'axios';
 
 function MakeDonation() {
+  const userID = localStorage.getItem("userId") || "";
   const [formData, setFormData] = useState({
-    userId: localStorage.getItem("userId") || "",
+    userId: userID,
     perishable: true,
     type: 'Produce',
     quantity: '',
@@ -34,7 +35,7 @@ function MakeDonation() {
 
     try {
     console.log(payload);
-      const res = await axios.post('http://localhost:5000/api/donations/add/', payload);
+      const res = await axios.post('http://localhost:5000/api/donations/add', payload);
       toast({
         title: 'Donation submitted!',
         description: `Your donation ID is ${res.data.donation_id}`,
@@ -45,6 +46,7 @@ function MakeDonation() {
 
       // Clear the form after submission
       setFormData({
+        userId: userID,
         perishable: 'Yes',
         type: 'Produce',
         quantity: '',

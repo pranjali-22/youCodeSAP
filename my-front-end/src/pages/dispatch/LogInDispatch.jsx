@@ -34,7 +34,7 @@ const LogInDispatch = () => {
             return;
         }
 
-        navigate('/dashboardDispatch'); // TODO change w backend 
+        //navigate('/dashboardDispatch'); // TODO change w backend 
 
         try {
             // TODO BACKEND
