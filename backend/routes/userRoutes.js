@@ -67,4 +67,19 @@ router.post('/login', async (req, res) => {
     }
 });
 
+router.get('/getUser', async (req, res) => {
+    try {
+        const user = await User.findOne();
+        res.status(200).json({
+            id: user._id,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+            type: user.type
+        });
+    } catch (err) {
+        res.status(500).json({ error: 'Error fetching user', details: err });
+    }
+});
+
 module.exports = router;

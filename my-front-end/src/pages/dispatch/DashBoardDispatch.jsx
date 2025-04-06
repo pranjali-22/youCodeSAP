@@ -56,6 +56,10 @@ function DashBoardDispatch() {
             });
 
             // Reset selection or redirect as needed
+            setDonations((prevDonations) =>
+                prevDonations.filter((donation) => !selectedDonations.includes(donation.id))
+            );
+            
             setSelectedDonations([]);
         } catch (error) {
             console.error("Error confirming selection:", error);
