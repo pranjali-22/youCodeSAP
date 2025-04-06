@@ -6,9 +6,10 @@ import axios from 'axios';
 
 function MakeDonation() {
   const [formData, setFormData] = useState({
-    category: 'perishable',
-    weight: '',
-    expiry_date: '',
+    perishable: '',
+    type: 'perishable',
+    quantity: '',
+    expiryDate: '',
     location: ''
   });
 
@@ -27,7 +28,7 @@ function MakeDonation() {
 
     const payload = {
       ...formData,
-      weight: Number(formData.weight)
+      quantity: Number(formData.quantity)
     };
 
     try {
@@ -42,9 +43,10 @@ function MakeDonation() {
 
       // Clear the form after submission
       setFormData({
-        category: 'perishable',
-        weight: '',
-        expiry_date: '',
+        perishable: '',
+        type: 'perishable',
+        quantity: '',
+        expiryDate: '',
         location: ''
       });
     } catch (error) {
@@ -72,6 +74,14 @@ function MakeDonation() {
       <Heading mb={6}>Make a Donation</Heading>
       <form onSubmit={handleSubmit}>
         <VStack spacing={4}>
+        <FormControl isRequired>
+            <FormLabel>Perishable? </FormLabel>
+            <Select name="perishable" value={formData.category} onChange={handleChange}>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </Select>
+          </FormControl>
+
           <FormControl isRequired>
             <FormLabel>Food Category</FormLabel>
             <Select name="category" value={formData.category} onChange={handleChange}>
@@ -87,7 +97,7 @@ function MakeDonation() {
             <Input
               type="number"
               name="weight"
-              value={formData.weight}
+              value={formData.quantity}
               onChange={handleChange}
               min="1"
             />
@@ -97,8 +107,8 @@ function MakeDonation() {
             <FormLabel>Expiry Date</FormLabel>
             <Input
               type="date"
-              name="expiry_date"
-              value={formData.expiry_date}
+              name="expiryDate"
+              value={formData.expiryDate}
               onChange={handleChange}
             />
           </FormControl>
