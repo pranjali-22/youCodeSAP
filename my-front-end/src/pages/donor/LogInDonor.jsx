@@ -33,7 +33,7 @@ const LogIn = () => {
             });
             return;
         }
-        navigate('/dashboardDonor'); //TODO change w backend
+        // navigate('/dashboardDonor'); //TODO change w backend
 
         
         try {
