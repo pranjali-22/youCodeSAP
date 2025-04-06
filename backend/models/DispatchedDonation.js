@@ -1,4 +1,5 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const dispatchedDonationSchema = new mongoose.Schema({
     userId: {
@@ -18,4 +19,5 @@ const dispatchedDonationSchema = new mongoose.Schema({
 });
 
 const DispatchedDonation = mongoose.model('DispatchedDonation', dispatchedDonationSchema);
-export default DispatchedDonation;
+
+module.exports = DispatchedDonation;

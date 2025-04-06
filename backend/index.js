@@ -7,7 +7,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const userRoutes = require('./routes/userRoutes'); // Import routes for user (for example)
 const donationRoutes = require('./routes/donationRoutes');
-import dispatchedDonationsRoutes from './routes/dispatchedDonations.js';
+const dispatchedDonationsRoutes = require('./routes/dispatchedDonations.js');
 
 
 dotenv.config(); // Load environment variables from .env file
