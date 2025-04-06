@@ -111,6 +111,10 @@ function DashBoardDispatch() {
                                     <Text fontFamily='"Segoe UI", "Helvetica Neue", "Arial", sans-serif'>Weight: {donation.quantity}lb </Text>
                                     <Text fontFamily='"Segoe UI", "Helvetica Neue", "Arial", sans-serif'>Expiry Date: {donation.expiryDate.split('T')[0]}</Text>
                                     <Text fontFamily='"Segoe UI", "Helvetica Neue", "Arial", sans-serif'>Location: {donation.location}</Text>
+                                    {donation.userId && (
+                                        <Text fontFamily='"Segoe UI", "Helvetica Neue", "Arial", sans-serif'>Donated by: {donation.userId.firstName} {donation.userId.lastName}</Text>
+                                    )}
+                                    
                                 </Checkbox>
                             </Box>
                         ))

@@ -32,13 +32,13 @@ function DashBoardDonor() {
 
         fetchUserData();
 
-        setDonations(DummyDonations);
+        //setDonations(DummyDonations);
         const fetchDonations = async () => {
             try {
                 //TODO use backend
                 const response = await axios.get('http://localhost:5000/api/donations/getDonations');
                 const resultArray = response.data.filter(item =>
-                  item.userId === userId || item.userId?._id === userId
+                  item.userId?._id === userId
                 );                
                 console.log(resultArray);
                 setDonations(resultArray); // Assuming response.data contains an array of donations

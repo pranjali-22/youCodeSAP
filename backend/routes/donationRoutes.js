@@ -33,7 +33,7 @@ router.post('/add', async (req, res) => {
 // GET route to fetch all donations
 router.get('/getDonations', async (req, res) => {
     try {
-      const donations = await Donation.find().populate('pickedBy', 'firstName lastName');      // You can add filters here if needed
+      const donations = await Donation.find().populate('userId', '_id firstName lastName').populate('pickedBy', 'firstName lastName');      // You can add filters here if needed
         res.status(200).json(donations);
     } catch (err) {
         res.status(500).json({ error: 'Error fetching donations', details: err });
