@@ -107,7 +107,7 @@ function DashBoardDispatch() {
                                 >
                                     <Text fontFamily='"Segoe UI", "Helvetica Neue", "Arial", sans-serif'>Category: {donation.type}</Text>
                                     <Text fontFamily='"Segoe UI", "Helvetica Neue", "Arial", sans-serif'>Weight: {donation.quantity}lb </Text>
-                                    <Text fontFamily='"Segoe UI", "Helvetica Neue", "Arial", sans-serif'>Expiry Date: {donation.expiryDate}</Text>
+                                    <Text fontFamily='"Segoe UI", "Helvetica Neue", "Arial", sans-serif'>Expiry Date: {donation.expiryDate.split('T')[0]}</Text>
                                     <Text fontFamily='"Segoe UI", "Helvetica Neue", "Arial", sans-serif'>Location: {donation.location}</Text>
                                 </Checkbox>
                             </Box>

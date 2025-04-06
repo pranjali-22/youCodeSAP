@@ -14,6 +14,7 @@ function DashBoardDonor() {
     // TODO analytics 
     const totalWeight = donations.reduce((sum, donation) => sum + (donation.quantity || 0), 0);
     const estimatedCO2eSaved = (totalWeight * 2.5).toFixed(1); // assume 2.5 lbs CO2e saved per 1 lb of food
+    const totalDonVal = (totalWeight * 3.58).toFixed(2);
 
     // get donations
     useEffect(() => {
@@ -54,7 +55,28 @@ function DashBoardDonor() {
         navigate('/makeDonation'); // goto makeDonation
     };
 
-    return (
+    return (<>
+      <Box
+      as="a"
+      href="https://www.foodstash.ca/food-supplier-form"
+      target="_blank"
+      rel="noopener noreferrer"
+      position="fixed"       
+      top={2}                
+      left={2}
+      right={2}
+      zIndex={1000}
+      bg="#283C1C"
+      color="white"
+      textAlign="center"
+      py={1}
+      fontFamily='"Segoe UI", "Helvetica Neue", "Arial", sans-serif'
+      fontWeight="bold"
+      fontSize="lg"
+      _hover={{ opacity:"0.5", textDecoration: "underline" }}
+    >
+      Want to schedule regular donations? Sign up here!
+    </Box>
         <Box width="100%" minH="100vh" bg="gray.50" py={10}>
         <VStack spacing={8} align="center" justify="center" maxW="900px" mx="auto" px={4}>
           {/* Analytics Section */}
@@ -71,6 +93,7 @@ function DashBoardDonor() {
           <Heading fontSize="lg" mb={2}>Your Impact 🌍</Heading>
           <Text>Total CO₂e Saved: <strong>{estimatedCO2eSaved} lbs</strong></Text>
           <Text>Total Food Donated: <strong>{totalWeight} lbs</strong></Text>
+          <Text>Total Donation Value: <strong>${totalDonVal}</strong></Text>
         </Box>
 
         {/* Donor Dashboard Header */}
@@ -81,7 +104,7 @@ function DashBoardDonor() {
           textAlign="left"
           flex="1"
         >
-          {firstName ? `${firstName}'s Dashboard` : 'Donor Dashboard'}
+          {firstName ? `${firstName.charAt(0).toUpperCase() + firstName.slice(1)}'s Dashboard` : 'Donor Dashboard'}
         </Heading>
       </HStack>
 
@@ -123,7 +146,7 @@ function DashBoardDonor() {
                   <Box key={donation._id} p={4} shadow="md" borderWidth="1px" borderRadius="md" bg="white">
                     <Text>Category: {donation.type}</Text>
                     <Text>Weight: {donation.quantity}lb</Text>
-                    <Text>Expiry Date: {donation.expiryDate}</Text>
+                    <Text>Expiry Date: {donation.expiryDate.split('T')[0]}</Text>
                     <Text>Location: {donation.location}</Text>
                     {/* TODO 
                     <Text>Picked up by: {donation.dispatcher}</Text>
@@ -135,6 +158,7 @@ function DashBoardDonor() {
           </Box>
         </VStack>
       </Box>
+      </>
     );
 }
 
