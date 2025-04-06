@@ -37,14 +37,17 @@ const LogIn = () => {
 
         
         try {
+            console.log(email);
+            console.log(password);
             // TODO BACKEND
             const response = await axios.post("http://localhost:5000/api/users/login", {
                 email, 
                 password,
                 type,
             });
+            console.log(response.status);
 
-            if (response.status === 201) {
+            if (response.status === 200) {
                 toast({
                     title: 'Success',
                     description: 'User logged in successfully.',
@@ -58,6 +61,7 @@ const LogIn = () => {
                     email: '',
                     password: ''
                 });
+                
                 
                 navigate('/dashboardDonor');
                 

@@ -44,7 +44,7 @@ const LogInDispatch = () => {
                 type,
             });
 
-            if (response.status === 201) {
+            if (response.status === 200) {
                 toast({
                     title: 'Success',
                     description: 'User logged in successfully.',
