@@ -34,10 +34,14 @@ router.post('/register', async (req, res) => {
 
 // POST /login route
 router.post('/login', async (req, res) => {
-    const { firstName, lastName, email, password, type } = req.body;
+    const { email, password, type } = req.body;
+    console.log("here");
 
     try {
         const user = await User.findOne({ email });
+        console.log("found user");
+        console.log(email);
+        console.log(user);
 
         if (!user) {
             return res.status(401).json({ error: 'Invalid email or password' });
