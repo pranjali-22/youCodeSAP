@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import DummyDonations from './DummyDonations';
-import { Box, Button, VStack, Heading, Grid, Text } from '@chakra-ui/react';
+import { Box, Button, VStack, Heading, HStack, Grid, Text } from '@chakra-ui/react';
 
 function DashBoardDonor() {
     const navigate = useNavigate();
@@ -20,7 +20,7 @@ function DashBoardDonor() {
         const fetchUserData = async () => {
             try {
                 // Fetch user data from backend (assuming you have a user endpoint)
-                const userResponse = await axios.get('http://localhost:5000/api/users'); 
+                const userResponse = await axios.get('http://localhost:5000/api/users/getUser'); 
                 setFirstName(userResponse.data.firstName); // Assuming response has the first name
             } catch (error) {
                 console.error("Error fetching user data:", error);
@@ -28,10 +28,6 @@ function DashBoardDonor() {
         };
 
         fetchUserData();
-
-
-
-
 
         setDonations(DummyDonations);
         const fetchDonations = async () => {
@@ -55,40 +51,86 @@ function DashBoardDonor() {
     };
 
     return (
-        <Box>
-            <VStack spacing={6} align="center" justify="center" padding={8}>
-                <Heading fontFamily='"Century Gothic", "Gill Sans", "Trebuchet MS", sans-serif' as="h1" size="xl">
-                {firstName ? `${firstName}'s Dashboard` : 'Donor Dashboard'}
-                </Heading>
-                
-                {/* Button to make a donation */}
-                <Button fontFamily='"Segoe UI", "Helvetica Neue", "Arial", sans-serif' onClick={handleMakeDonation} bg="#F58514" color="white" size="lg"  _hover={{ opacity: 0.5}}>
-                    Make a Donation
-                </Button>
-                
-                <Heading fontFamily='"Century Gothic", "Gill Sans", "Trebuchet MS", sans-serif' as="h2" size="md" mt={8}>
-                    Previous Donations</Heading>
-                
-                <Grid templateColumns="repeat(2, 1fr)" gap={6} width="full">
-                    {donations.length === 0 ? (
-                    <Text fontFamily='"Century Gothic", "Gill Sans", "Trebuchet MS", sans-serif' >
-                        No previous donations found.</Text>
-                ) : (
-                    donations.map((donation) => (
-                        <Box key={donation.id} padding={4} shadow="md" borderWidth="1px" width="full">
-                            <Text fontFamily='"Segoe UI", "Helvetica Neue", "Arial", sans-serif' >Category: {donation.type}</Text>
-                            <Text fontFamily='"Segoe UI", "Helvetica Neue", "Arial", sans-serif' >Weight: {donation.quantity}lb </Text>
-                            <Text fontFamily='"Segoe UI", "Helvetica Neue", "Arial", sans-serif' >Expiry Date: {donation.expiryDate}</Text>
-                            <Text fontFamily='"Segoe UI", "Helvetica Neue", "Arial", sans-serif' >Location: {donation.location}</Text>
-                        
-                            <Text fontFamily='"Segoe UI", "Helvetica Neue", "Arial", sans-serif' >Picked up by: {donation.dispatcher}</Text>
-                            {/* TODO dispatcher field */}
-                        </Box>
-                    ))
-                )}
-                  </Grid>
-            </VStack>
+        <Box width="100%" minH="100vh" bg="gray.50" py={10}>
+        <VStack spacing={8} align="center" justify="center" maxW="900px" mx="auto" px={4}>
+          {/* Analytics Section */}
+          <HStack spacing={9} align="start" width="100%" justify="left">
+        {/* Your Impact Box */}
+        <Box
+          width="250px"
+          bg="white"
+          p={4}
+          borderRadius="md"
+          boxShadow="md"
+          textAlign="left"
+        >
+          <Heading fontSize="lg" mb={2}>Your Impact 🌍</Heading>
+          <Text>Total CO₂e Saved: <strong>{estimatedCO2eSaved} kg</strong></Text>
+          <Text>Total Food Donated: <strong>{totalWeight} lbs</strong></Text>
         </Box>
+
+        {/* Donor Dashboard Header */}
+        <Heading
+          fontFamily='"Century Gothic", "Gill Sans", "Trebuchet MS", sans-serif'
+          as="h1"
+          size="xl"
+          textAlign="left"
+          flex="1"
+        >
+          {firstName ? `${firstName}'s Dashboard` : 'Donor Dashboard'}
+        </Heading>
+      </HStack>
+
+    
+          {/* Make Donation Button */}
+          <Button
+            fontFamily='"Segoe UI", "Helvetica Neue", "Arial", sans-serif'
+            onClick={handleMakeDonation}
+            bg="#F58514"
+            color="white"
+            size="lg"
+            _hover={{ opacity: 0.5 }}
+          >
+            Make a Donation
+          </Button>
+    
+          {/* Previous Donations Section */}
+          <Box width="100%">
+            <Heading
+              fontFamily='"Century Gothic", "Gill Sans", "Trebuchet MS", sans-serif'
+              as="h2"
+              size="md"
+              mb={4}
+            >
+              Previous Donations
+            </Heading>
+    
+            {donations.length === 0 ? (
+              <Text fontFamily='"Century Gothic", "Gill Sans", "Trebuchet MS", sans-serif' >
+                No previous donations found.
+              </Text>
+            ) : (
+              <Grid
+                templateColumns="repeat(auto-fill, minmax(300px, 1fr))"
+                gap={6}
+                width="100%"
+              >
+                {donations.map((donation) => (
+                  <Box key={donation.id} p={4} shadow="md" borderWidth="1px" borderRadius="md" bg="white">
+                    <Text>Category: {donation.type}</Text>
+                    <Text>Weight: {donation.quantity}lb</Text>
+                    <Text>Expiry Date: {donation.expiryDate}</Text>
+                    <Text>Location: {donation.location}</Text>
+                    {/* TODO 
+                    <Text>Picked up by: {donation.dispatcher}</Text>
+                    */}
+                  </Box>
+                ))}
+              </Grid>
+            )}
+          </Box>
+        </VStack>
+      </Box>
     );
 }
 

@@ -15,7 +15,6 @@ const donationSchema = new Schema({
     },
     type: {
         type: String,
-        enum: ['produce', 'frozen', 'pantry'],
         required: true
     },
     quantity: {
