@@ -65,7 +65,12 @@ const RegisterDonor = () => {
                     password: ''
                 });
                 
+                const { user } = response.data;
+                localStorage.setItem("userId", user.id);
+                localStorage.setItem("firstName", user.firstName);
+                localStorage.setItem("lastName", user.lastName);
                 navigate('/dashboardDonor');
+
                 
             } else {
                 toast({
