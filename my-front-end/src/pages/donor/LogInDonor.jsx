@@ -38,7 +38,7 @@ const LogIn = () => {
 
         try {
             // TODO BACKEND
-            const response = await axios.post("http://localhost:5000/api/users/", {
+            const response = await axios.post("http://localhost:5000/api/users/register/", {
                 firstName,
                 lastName, 
                 email, 

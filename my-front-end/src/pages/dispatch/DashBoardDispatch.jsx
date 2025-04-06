@@ -13,7 +13,7 @@ function DashBoardDispatch() {
         const fetchDonations = async () => {
             try {
                 // TODO use backend
-                const response = await axios.get('http://localhost:5000/api/donations');
+                const response = await axios.get('http://localhost:5000/api/donations/');
                 setDonations(response.data); // Assuming response.data contains an array of donations
             } catch (error) {
                 console.error("Error fetching donations:", error);
