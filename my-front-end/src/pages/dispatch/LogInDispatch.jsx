@@ -136,7 +136,7 @@ const LogInDispatch = () => {
                             value={userDetails.password}
                             onChange={handleInputChange}
                         />
-                        <Button color="white" bg="#F8993A" onClick={handleSubmit} w="full" _hover={{ opacity: 0.5}}>
+                        <Button color="white" bg="#F8993A" onClick={handleSubmit} w="full" _hover={{ opacity: 0.3}}>
                             Log in
                         </Button>
                     </VStack>
