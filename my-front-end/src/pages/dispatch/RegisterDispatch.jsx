@@ -141,6 +141,13 @@ const RegisterDispatch = () => {
                         <Button color="white" bg="#F8993A" onClick={handleSubmit} w="full" _hover={{ opacity: 0.3}}>
                             Register
                         </Button>
+                        <Button
+              variant="link"
+              colorScheme="blue"
+              onClick={() => navigate('/loginDispatch')}
+            >
+              Log in instead
+            </Button>
                     </VStack>
                 </Box>
             </VStack>

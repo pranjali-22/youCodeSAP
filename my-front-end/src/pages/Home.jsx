@@ -24,12 +24,12 @@ const Home = () => {
              style={{ width: '60%', maxWidth: '500px', height: 'auto', margin: '0 auto', paddingBottom: '30px'}} />
         {/* Buttons side by side */}
         <HStack spacing={6} justify="center">
-          <Link to='/loginDispatch'>
+          <Link to='/registerDispatch'>
             <Button fontFamily='"Segoe UI", "Helvetica Neue", "Arial", sans-serif' bg="#F58514" color="white" size="lg">
               I am a dispatcher
             </Button>
           </Link>
-          <Link to='/loginDonor'>
+          <Link to='/registerDonor'>
             <Button fontFamily='"Segoe UI", "Helvetica Neue", "Arial", sans-serif' bg="#F58514" color="white" size="lg">
               I am a donor
             </Button>
