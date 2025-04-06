@@ -6,7 +6,7 @@ import axios from 'axios';
 
 function MakeDonation() {
   const [formData, setFormData] = useState({
-    perishable: 'Yes',
+    perishable: true,
     type: 'Produce',
     quantity: '',
     expiryDate: '',
@@ -78,8 +78,8 @@ function MakeDonation() {
         <FormControl isRequired>
             <FormLabel>Perishable? </FormLabel>
             <Select name="perishable" value={formData.perishable} onChange={handleChange}>
-              <option value="Yes">Yes</option>
-              <option value="No">No</option>
+              <option value="true">Yes</option>
+              <option value="false">No</option>
             </Select>
           </FormControl>
 
