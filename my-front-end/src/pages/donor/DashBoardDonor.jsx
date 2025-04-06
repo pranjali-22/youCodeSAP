@@ -32,27 +32,27 @@ function DashBoardDonor() {
     return (
         <Box>
             <VStack spacing={6} align="center" justify="center" padding={8}>
-                <Heading as="h1" size="xl">Donor Dashboard</Heading>
+                <Heading fontFamily='"Century Gothic", "Gill Sans", "Trebuchet MS", sans-serif' as="h1" size="xl">Donor Dashboard</Heading>
                 
                 {/* Button to make a donation */}
-                <Button onClick={handleMakeDonation} bg="#F58514" color="white" size="lg"  _hover={{ opacity: 0.5}}>
+                <Button fontFamily='"Segoe UI", "Helvetica Neue", "Arial", sans-serif' onClick={handleMakeDonation} bg="#F58514" color="white" size="lg"  _hover={{ opacity: 0.5}}>
                     Make Donation
                 </Button>
                 
-                <Heading as="h2" size="md" mt={8}>Previous Donations</Heading>
+                <Heading fontFamily='"Century Gothic", "Gill Sans", "Trebuchet MS", sans-serif' as="h2" size="md" mt={8}>Previous Donations</Heading>
                 
                 {/* Display previous donations */}
                 {donations.length === 0 ? (
-                    <Text>No previous donations found.</Text>
+                    <Text fontFamily='"Century Gothic", "Gill Sans", "Trebuchet MS", sans-serif' >No previous donations found.</Text>
                 ) : (
                     donations.map((donation) => (
                         <Box key={donation.id} padding={4} shadow="md" borderWidth="1px" width="full">
-                            <Text>Category: {donation.type}</Text>
-                            <Text>Weight: {donation.quantity}lb </Text>
-                            <Text>Expiry Date: {donation.expiryDate}</Text>
-                            <Text>Location: {donation.location}</Text>
+                            <Text fontFamily='"Segoe UI", "Helvetica Neue", "Arial", sans-serif' >Category: {donation.type}</Text>
+                            <Text fontFamily='"Segoe UI", "Helvetica Neue", "Arial", sans-serif' >Weight: {donation.quantity}lb </Text>
+                            <Text fontFamily='"Segoe UI", "Helvetica Neue", "Arial", sans-serif' >Expiry Date: {donation.expiryDate}</Text>
+                            <Text fontFamily='"Segoe UI", "Helvetica Neue", "Arial", sans-serif' >Location: {donation.location}</Text>
                         
-                            <Text>Picked up by: {donation.dispatcher}</Text>
+                            <Text fontFamily='"Segoe UI", "Helvetica Neue", "Arial", sans-serif' >Picked up by: {donation.dispatcher}</Text>
                             {/* TODO dispatcher field */}
                         </Box>
                     ))

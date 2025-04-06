@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import DummyDonations from './DummyDonations';
-import { Box, Button, VStack, Heading, Text, Checkbox } from '@chakra-ui/react';
+import { Box, Button, Grid, VStack, Heading, Text, Checkbox } from '@chakra-ui/react';
 
 function DashBoardDispatch() {
     const navigate = useNavigate();
@@ -70,44 +70,46 @@ function DashBoardDispatch() {
     return (
         <Box>
             <VStack spacing={6} align="center" justify="center" padding={8}>
-                <Heading as="h1" size="xl">Dispatch Dashboard</Heading>
+                <Heading fontFamily='"Century Gothic", "Gill Sans", "Trebuchet MS", sans-serif' as="h1" size="xl" >Dispatch Dashboard</Heading>
                 
-                <Heading as="h2" size="md" mt={8}>Donations Available for Pickup</Heading>
+                <Heading fontFamily='"Century Gothic", "Gill Sans", "Trebuchet MS", sans-serif' as="h2" size="md" mt={8}>Donations Available for Pickup</Heading>
                 
-                {/* Display previous donations */}
-                {donations.length === 0 ? (
-                    <Text>No donations found.</Text>
-                ) : (
-                    donations.map((donation) => (
-                        <Box 
-                            key={donation.id} 
-                            padding={4} 
-                            shadow="md" 
-                            borderWidth="1px" 
-                            width="full" 
-                            bg={selectedDonations.includes(donation.id) ? '#F58514' : 'white'}
-                        >
-                            <Checkbox 
-                                isChecked={selectedDonations.includes(donation.id)} 
-                                onChange={() => handleDonationSelect(donation.id)} 
+                <Grid templateColumns="repeat(2, 1fr)" gap={6} width="full">
+                    {donations.length === 0 ? (
+                        <Text>No donations found.</Text>
+                    ) : (
+                        donations.map((donation) => (
+                            <Box 
+                                key={donation.id} 
+                                padding={4} 
+                                shadow="md" 
+                                borderWidth="1px" 
+                                width="full" 
+                                bg={selectedDonations.includes(donation.id) ? '#F58514' : 'white'}
                             >
-                             <Text>Category: {donation.type}</Text>
-                            <Text>Weight: {donation.quantity}lb </Text>
-                            <Text>Expiry Date: {donation.expiryDate}</Text>
-                            <Text>Location: {donation.location}</Text>
-                        
-                            </Checkbox>
-                        </Box>
-                    ))
-                )}
-                 {/* Confirm Selection Button */}
-                 {selectedDonations.length > 0 && (
+                                <Checkbox 
+                                    isChecked={selectedDonations.includes(donation.id)} 
+                                    onChange={() => handleDonationSelect(donation.id)} 
+                                >
+                                    <Text fontFamily='"Segoe UI", "Helvetica Neue", "Arial", sans-serif'>Category: {donation.type}</Text>
+                                    <Text fontFamily='"Segoe UI", "Helvetica Neue", "Arial", sans-serif'>Weight: {donation.quantity}lb </Text>
+                                    <Text fontFamily='"Segoe UI", "Helvetica Neue", "Arial", sans-serif'>Expiry Date: {donation.expiryDate}</Text>
+                                    <Text fontFamily='"Segoe UI", "Helvetica Neue", "Arial", sans-serif'>Location: {donation.location}</Text>
+                                </Checkbox>
+                            </Box>
+                        ))
+                    )}
+                </Grid>
+                
+                {/* Confirm Selection Button */}
+                {selectedDonations.length > 0 && (
                     <Button
+                    fontFamily='"Segoe UI", "Helvetica Neue", "Arial", sans-serif'
                         bg="#283C1C"
                         color="white"
                         onClick={handleConfirmSelection}
                         mt={4}
-                        _hover={{ opacity: 0.5}}
+                        _hover={{ opacity: 0.5 }}
                     >
                         Confirm Selection
                     </Button>
@@ -116,5 +118,4 @@ function DashBoardDispatch() {
         </Box>
     );
 }
-
 export default DashBoardDispatch;
