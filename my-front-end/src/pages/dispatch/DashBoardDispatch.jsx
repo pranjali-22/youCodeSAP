@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import DummyDonations from './DummyDonations';
-import { Box, Button, Grid, VStack, Heading, Text, Checkbox } from '@chakra-ui/react';
+import { Box, Button, Grid, VStack, Heading, Text, Checkbox, useToast } from '@chakra-ui/react';
 
 function DashBoardDispatch() {
+    const toast = useToast();
     const navigate = useNavigate();
     const [donations, setDonations] = useState([]);
     const [selectedDonations, setSelectedDonations] = useState([]); // track selected
@@ -16,8 +17,8 @@ function DashBoardDispatch() {
                 // TODO use backend
                 console.log("before get");
                 const response = await axios.get('http://localhost:5000/api/donations/getDonations');
-                console.log(response);
-                setDonations(response.data); // Assuming response.data contains an array of donations
+                const resultArray = response.data.filter(item => item.dispatched === false );
+                setDonations(resultArray); // Assuming response.data contains an array of donations
             } catch (error) {
                 console.error("Error fetching donations:", error);
             }
@@ -43,20 +44,27 @@ function DashBoardDispatch() {
 
     const handleConfirmSelection = async () => {
         try {
-            console.log(selectedDonations);
-            const response = await axios.post('http://localhost:5000/api/dispatch/confirm', {
-                selectedDonations
-            });
+            // console.log(selectedDonations);
+           
+            // const response = await axios.post('http://localhost:5000/api/dispatch/confirm', {
+            //     selectedDonations
+            // });
+            await axios.put('http://localhost:5000/api/donations/dispatch', {
+                donationIds: selectedDonations
+              });
+        
+        
             toast({
-                title: "Success",
-                description: "Donations confirmed for dispatch.",
-                status: "success",
-                duration: 3000,
-                isClosable: true,
+                  title: "Success",
+                  description: "Donations confirmed for dispatch.",
+                  status: "success",
+                  duration: 3000,
+                  isClosable: true,
             });
 
             // Reset selection or redirect as needed
             setSelectedDonations([]);
+            //fetchDonations();
         } catch (error) {
             console.error("Error confirming selection:", error);
             toast({
@@ -82,16 +90,16 @@ function DashBoardDispatch() {
                     ) : (
                         donations.map((donation) => (
                             <Box 
-                                key={donation.id} 
+                                key={donation._id} 
                                 padding={4} 
                                 shadow="md" 
                                 borderWidth="1px" 
                                 width="full" 
-                                bg={selectedDonations.includes(donation.id) ? '#F58514' : 'white'}
+                                bg={selectedDonations.includes(donation._id) ? '#F58514' : 'white'}
                             >
                                 <Checkbox 
-                                    isChecked={selectedDonations.includes(donation.id)} 
-                                    onChange={() => handleDonationSelect(donation.id)} 
+                                    isChecked={selectedDonations.includes(donation._id)} 
+                                    onChange={() => handleDonationSelect(donation._id)} 
                                 >
                                     <Text fontFamily='"Segoe UI", "Helvetica Neue", "Arial", sans-serif'>Category: {donation.type}</Text>
                                     <Text fontFamily='"Segoe UI", "Helvetica Neue", "Arial", sans-serif'>Weight: {donation.quantity}lb </Text>

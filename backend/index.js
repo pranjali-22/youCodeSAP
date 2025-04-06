@@ -7,7 +7,6 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const userRoutes = require('./routes/userRoutes'); // Import routes for user (for example)
 const donationRoutes = require('./routes/donationRoutes');
-const dispatchedDonationsRoutes = require('./routes/dispatchedDonations.js');
 
 
 dotenv.config(); // Load environment variables from .env file
@@ -21,7 +20,6 @@ app.use(express.json()); // Parse incoming requests with JSON payloads
 // Use routes
 app.use('/api/users', userRoutes);
 app.use('/api/donations', donationRoutes);
-app.use('/api/dispatched-donations', dispatchedDonationsRoutes);
 
 // Connect to MongoDB database
 mongoose.connect(process.env.MONGO_URI, {
