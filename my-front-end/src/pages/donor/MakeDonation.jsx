@@ -6,7 +6,7 @@ import axios from 'axios';
 
 function MakeDonation() {
   const [formData, setFormData] = useState({
-    perishable: '',
+    perishable: 'Yes',
     type: 'perishable',
     quantity: '',
     expiryDate: '',
@@ -96,7 +96,7 @@ function MakeDonation() {
             <FormLabel>Weight (lbs)</FormLabel>
             <Input
               type="number"
-              name="weight"
+              name="quantity"
               value={formData.quantity}
               onChange={handleChange}
               min="1"
