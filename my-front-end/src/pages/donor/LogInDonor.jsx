@@ -38,7 +38,7 @@ const LogIn = () => {
 
         try {
             // TODO BACKEND
-            const response = await axios.post("http://localhost:5000/api/user/", {
+            const response = await axios.post("http://localhost:5000/api/users/", {
                 firstName,
                 lastName, 
                 email, 
@@ -135,7 +135,7 @@ const LogIn = () => {
                             value={userDetails.password}
                             onChange={handleInputChange}
                         />
-                        <Button color="white" bg="#F8993A" onClick={handleSubmit} w="full" _hover={{ opacity: 0.5}}>
+                        <Button color="white" bg="#F8993A" onClick={handleSubmit} w="full" _hover={{ opacity: 0.3}}>
                             Log in
                         </Button>
                     </VStack>

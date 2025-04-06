@@ -18,8 +18,8 @@ app.use(cors()); // Allow cross-origin requests
 app.use(express.json()); // Parse incoming requests with JSON payloads
 
 // Use routes
-app.use('/api/users', userRoutes); // Add your user-related routes here
-app.use('/api/donation', donationRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/donations', donationRoutes);
 
 // Connect to MongoDB database
 mongoose.connect(process.env.MONGO_URI, {

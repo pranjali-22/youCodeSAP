@@ -14,7 +14,7 @@ function DashBoardDonor() {
         const fetchDonations = async () => {
             try {
                 //TODO use backend
-                const response = await axios.get('http://localhost:5000/api/donations');
+                const response = await axios.get('http://localhost:5000/api/donations/');
                 setDonations(response.data); // Assuming response.data contains an array of donations
             } catch (error) {
                 console.error("Error fetching donations:", error);
@@ -48,7 +48,7 @@ function DashBoardDonor() {
                     donations.map((donation) => (
                         <Box key={donation.id} padding={4} shadow="md" borderWidth="1px" width="full">
                             <Text>Category: {donation.category}</Text>
-                            <Text>Weight: {donation.weight}</Text>
+                            <Text>Weight: {donation.weight}lb </Text>
                             <Text>Expiry Date: {donation.date}</Text>
                             <Text>Location: {donation.location}</Text>
                         
