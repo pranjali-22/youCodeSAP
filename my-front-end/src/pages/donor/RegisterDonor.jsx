@@ -142,8 +142,13 @@ const RegisterDonor = () => {
                             Register
                         </Button>
                         <Button
-              variant="link"
-              colorScheme="blue"
+               variant="link"
+               bg = "#283C1C"
+               color = "white"
+               p={6} 
+               w="55%"
+               h="15px"
+               fontSize="lg"
               onClick={() => navigate('/loginDonor')}
             >
               Log in instead

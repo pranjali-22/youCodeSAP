@@ -11,17 +11,18 @@ function DashBoardDispatch() {
     
     // get donations
     useEffect(() => {
-        // const fetchDonations = async () => {
-        //     try {
-        //         // TODO use backend
-        //         const response = await axios.get('http://localhost:5000/api/donations/');
-        //         setDonations(response.data); // Assuming response.data contains an array of donations
-        //     } catch (error) {
-        //         console.error("Error fetching donations:", error);
-        //     }
-        // };
+        const fetchDonations = async () => {
+            try {
+                // TODO use backend
+                const response = await axios.get('http://localhost:5000/api/donations/');
+                setDonations(response.data); // Assuming response.data contains an array of donations
+            } catch (error) {
+                console.error("Error fetching donations:", error);
+            }
+        };
 
-        // fetchDonations();
+        fetchDonations();
+        //TODO get rid of
         setDonations(DummyDonations);
     }, []);
 
@@ -90,9 +91,9 @@ function DashBoardDispatch() {
                                 isChecked={selectedDonations.includes(donation.id)} 
                                 onChange={() => handleDonationSelect(donation.id)} 
                             >
-                             <Text>Category: {donation.category}</Text>
-                            <Text>Weight: {donation.weight}lb </Text>
-                            <Text>Expiry Date: {donation.date}</Text>
+                             <Text>Category: {donation.type}</Text>
+                            <Text>Weight: {donation.quantity}lb </Text>
+                            <Text>Expiry Date: {donation.expiryDate}</Text>
                             <Text>Location: {donation.location}</Text>
                         
                             </Checkbox>

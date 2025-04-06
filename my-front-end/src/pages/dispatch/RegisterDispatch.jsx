@@ -143,7 +143,12 @@ const RegisterDispatch = () => {
                         </Button>
                         <Button
               variant="link"
-              colorScheme="blue"
+              bg = "#283C1C"
+              color = "white"
+              p={6} 
+              w="55%"
+              h="15px"
+              fontSize="lg"
               onClick={() => navigate('/loginDispatch')}
             >
               Log in instead

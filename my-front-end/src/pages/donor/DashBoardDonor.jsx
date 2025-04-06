@@ -47,9 +47,9 @@ function DashBoardDonor() {
                 ) : (
                     donations.map((donation) => (
                         <Box key={donation.id} padding={4} shadow="md" borderWidth="1px" width="full">
-                            <Text>Category: {donation.category}</Text>
-                            <Text>Weight: {donation.weight}lb </Text>
-                            <Text>Expiry Date: {donation.date}</Text>
+                            <Text>Category: {donation.type}</Text>
+                            <Text>Weight: {donation.quantity}lb </Text>
+                            <Text>Expiry Date: {donation.expiryDate}</Text>
                             <Text>Location: {donation.location}</Text>
                         
                             <Text>Picked up by: {donation.dispatcher}</Text>
