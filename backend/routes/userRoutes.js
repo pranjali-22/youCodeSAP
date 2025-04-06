@@ -13,6 +13,7 @@ router.post('/register', async (req, res) => {
         return res.status(400).json({ error: 'User already exists' });
     }
 
+    //test
     // Create a new user
     const newUser = new User({
         firstName,
