@@ -1,8 +1,9 @@
 import React from 'react';
-import { Box, Heading, Text, Button, VStack, HStack } from '@chakra-ui/react';
+import { Box, Heading, Text, Button, VStack, HStack, useColorModeValue} from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
+  const textColor = useColorModeValue("#283C1C", "white");
   return (
     <Box
       minHeight="100vh"
@@ -14,10 +15,10 @@ const Home = () => {
       paddingTop="40px"
     >
     <Box textAlign="center">
-        <Heading fontFamily='"Century Gothic", "Gill Sans", "Trebuchet MS", sans-serif' as="h1" size="2xl"color="#283C1C"  mb={6}>
+        <Heading fontFamily='"Century Gothic", "Gill Sans", "Trebuchet MS", sans-serif' as="h1" size="2xl"color={textColor}  mb={6}>
           Food Stash X SAP
         </Heading>
-        <Text fontFamily='"Century Gothic", "Gill Sans", "Trebuchet MS", sans-serif' fontSize="lg" color="#283C1C" mb={6}>
+        <Text fontFamily='"Century Gothic", "Gill Sans", "Trebuchet MS", sans-serif' fontSize="lg" color={textColor} mb={6}>
           Help fight food waste
         </Text >
         <img src="https://images.squarespace-cdn.com/content/v1/5bd8b1c31137a631121dad8f/1558129346153-AT97QSVWTV6XM3CL7159/foodstash-primary-logoset.png?format=750w" 
