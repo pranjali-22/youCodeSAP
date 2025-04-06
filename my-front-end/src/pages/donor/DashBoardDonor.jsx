@@ -14,8 +14,10 @@ function DashBoardDonor() {
         const fetchDonations = async () => {
             try {
                 //TODO use backend
-                const response = await axios.get('http://localhost:5000/api/donations/');
-                setDonations(response.data); // Assuming response.data contains an array of donations
+                const response = await axios.get('http://localhost:5000/api/donations/getDonations');
+                const resultArray = response.data.filter(item => item.userId === '609b1f1c8b65f5a9d8a8b7c1' );
+                console.log(resultArray);
+                setDonations(resultArray); // Assuming response.data contains an array of donations
             } catch (error) {
                 console.error("Error fetching donations:", error);
             }
