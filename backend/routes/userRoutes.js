@@ -5,7 +5,7 @@ const User = require('../models/User');
 
 // POST route to create a new user
 router.post('/register', async (req, res) => {
-    const { firstName, lastName, email, password} = req.body;
+    const { firstName, lastName, email, password, type} = req.body;
 
     // Check if user already exists
     const existingUser = await User.findOne({ email });
@@ -18,7 +18,8 @@ router.post('/register', async (req, res) => {
         firstName,
         lastName,
         email,
-        password
+        password,
+        type
     });
 
     try {
@@ -32,7 +33,7 @@ router.post('/register', async (req, res) => {
 
 // POST /login route
 router.post('/login', async (req, res) => {
-    const { firstName, lastName, email, password } = req.body;
+    const { firstName, lastName, email, password, type } = req.body;
 
     try {
         const user = await User.findOne({ email });

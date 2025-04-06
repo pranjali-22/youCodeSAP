@@ -24,6 +24,7 @@ const LogInDispatch = () => {
 
     const handleSubmit = async () => {
         const {firstName, lastName, email, password} = userDetails;
+        const type = "dispatch";
 
         if (!firstName || !lastName || !email || !password) {
             toast({
@@ -35,15 +36,16 @@ const LogInDispatch = () => {
             return;
         }
 
-        navigate('/dashboardDispatch'); // TODO change w backend 
+        //navigate('/dashboardDispatch'); // TODO change w backend 
 
         try {
             // TODO BACKEND
-            const response = await axios.post("http://localhost:5000/api/user/", {
+            const response = await axios.post("http://localhost:5000/api/users/register", {
                 firstName,
                 lastName, 
                 email, 
-                password
+                password,
+                type,
             });
 
             if (response.status === 201) {
@@ -63,7 +65,7 @@ const LogInDispatch = () => {
                     password: ''
                 });
 
-                // navigate('/dashboardDispatch');
+                navigate('/dashboardDispatch');
 
             } else {
                 toast({

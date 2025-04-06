@@ -24,6 +24,7 @@ const LogIn = () => {
 
     const handleSubmit = async () => {
         const {firstName, lastName, email, password} = userDetails;
+        const type = "donor";
 
         if (!firstName || !lastName || !email || !password) {
             toast({
@@ -34,15 +35,17 @@ const LogIn = () => {
             });
             return;
         }
-        navigate('/dashboardDonor'); //TODO change w backend
+        //navigate('/dashboardDonor'); //TODO change w backend
 
+        
         try {
             // TODO BACKEND
-            const response = await axios.post("http://localhost:5000/api/users/register/", {
+            const response = await axios.post("http://localhost:5000/api/users/register", {
                 firstName,
                 lastName, 
                 email, 
-                password
+                password,
+                type,
             });
 
             if (response.status === 201) {
@@ -62,7 +65,7 @@ const LogIn = () => {
                     password: ''
                 });
                 
-                //navigate('/dashboardDonor');
+                navigate('/dashboardDonor');
                 
             } else {
                 toast({
