@@ -31,7 +31,7 @@ function MakeDonation() {
     };
 
     try {
-      const res = await axios.post('http://localhost:5000/api/donations', payload);
+      const res = await axios.post('http://localhost:5000/api/donations/add/', payload);
       toast({
         title: 'Donation submitted!',
         description: `Your donation ID is ${res.data.donation_id}`,

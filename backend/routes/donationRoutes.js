@@ -5,18 +5,22 @@ const Donation = require('../models/Donation');
 
 // POST route to add a donation
 router.post('/add', async (req, res) => {
-    const { userId, perishable, type, quantity, expiryDate, location } = req.body;
+    //const { userId, perishable, type, quantity, expiryDate, location } = req.body;
+    const {category, weight, expiry_date, location } = req.body;
 
     // Ensure expiryDate is in the correct format (it should be a Date object)
-    const donationExpiryDate = new Date(expiryDate);
+    const donationExpiryDate = new Date(expiry_date);
 
     // Create a new donation instance
     const newDonation = new Donation({
-        userId,
-        perishable,
-        type,
-        quantity,
-        expiryDate: donationExpiryDate,
+        //userId,
+        //perishable,
+        //type,
+        category,
+        //quantity,
+        weight,
+        //expiryDate: donationExpiryDate,
+        expiry_date: donationExpiryDate,
         location
     });
 
