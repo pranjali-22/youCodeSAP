@@ -40,4 +40,23 @@ router.get('/getDonations', async (req, res) => {
     }
 });
 
+router.put('/dispatch', async (req, res) => {
+    try {
+      const { donationIds } = req.body; // expects an array of IDs
+  
+      if (!Array.isArray(donationIds) || donationIds.length === 0) {
+        return res.status(400).json({ message: 'No donation IDs provided' });
+      }
+  
+      const result = await Donation.updateMany(
+        { _id: { $in: donationIds } },
+        { $set: { dispatched: true } }
+      );
+  
+      res.json({ message: 'Dispatch updated successfully', updatedCount: result.modifiedCount });
+    } catch (error) {
+      console.error('Error updating dispatch:', error);
+      res.status(500).json({ message: 'Server error' });
+    }
+  });
 module.exports = router;

@@ -33,6 +33,10 @@ const donationSchema = new Schema({
     createdAt: {
         type: Date,
         default: Date.now // Automatically set the timestamp when the donation is created
+    },
+    dispatched: {
+        type: Boolean,
+        default: false
     }
 });
 
