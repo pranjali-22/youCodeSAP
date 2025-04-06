@@ -34,7 +34,7 @@ const LogInDispatch = () => {
             return;
         }
 
-        //navigate('/dashboardDispatch'); // TODO change w backend 
+        navigate('/dashboardDispatch'); // TODO change w backend 
 
         try {
             // TODO BACKEND
@@ -64,7 +64,7 @@ const LogInDispatch = () => {
             } else {
                 toast({
                     title: 'Error',
-                    description: `Failed tolog in user. Status: ${response.status}`,
+                    description: `Failed to log in user. Status: ${response.status}`,
                     status: 'error',
                     isClosable: true,
                 });

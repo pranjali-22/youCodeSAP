@@ -7,7 +7,7 @@ import axios from 'axios';
 function MakeDonation() {
   const [formData, setFormData] = useState({
     perishable: 'Yes',
-    type: 'perishable',
+    type: 'Produce',
     quantity: '',
     expiryDate: '',
     location: ''
@@ -32,6 +32,7 @@ function MakeDonation() {
     };
 
     try {
+    console.log(payload);
       const res = await axios.post('http://localhost:5000/api/donations/add/', payload);
       toast({
         title: 'Donation submitted!',
@@ -43,8 +44,8 @@ function MakeDonation() {
 
       // Clear the form after submission
       setFormData({
-        perishable: '',
-        type: 'perishable',
+        perishable: 'Yes',
+        type: 'Produce',
         quantity: '',
         expiryDate: '',
         location: ''
@@ -76,7 +77,7 @@ function MakeDonation() {
         <VStack spacing={4}>
         <FormControl isRequired>
             <FormLabel>Perishable? </FormLabel>
-            <Select name="perishable" value={formData.category} onChange={handleChange}>
+            <Select name="perishable" value={formData.perishable} onChange={handleChange}>
               <option value="Yes">Yes</option>
               <option value="No">No</option>
             </Select>
@@ -84,8 +85,7 @@ function MakeDonation() {
 
           <FormControl isRequired>
             <FormLabel>Food Category</FormLabel>
-            <Select name="category" value={formData.category} onChange={handleChange}>
-              <option value="perishable">Perishable</option>
+            <Select name="type" value={formData.type} onChange={handleChange}>
               <option value="produce">Produce</option>
               <option value="frozen">Frozen</option>
               <option value="pantry">Pantry</option>
@@ -123,7 +123,7 @@ function MakeDonation() {
             />
           </FormControl>
 
-          <Button type="submit" colorScheme="blue" width="full">
+          <Button type="Submit" colorScheme="blue" width="full">
             Submit Donation
           </Button>
         </VStack>
