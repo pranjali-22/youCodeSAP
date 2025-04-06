@@ -31,4 +31,35 @@ router.post('/register', async (req, res) => {
     }
 });
 
+// POST /login route
+router.post('/login', async (req, res) => {
+    const { firstName, lastName, email, password } = req.body;
+
+    try {
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return res.status(401).json({ error: 'Invalid email or password' });
+        }
+
+        const isMatch = await user.comparePassword(password);
+
+        if (!isMatch) {
+            return res.status(401).json({ error: 'Invalid email or password' });
+        }
+
+        res.status(200).json({
+            message: 'Login successful',
+            user: {
+                id: user._id,
+                name: `${user.firstName} ${user.lastName}`,
+                email: user.email,
+                type: user.type
+            }
+        });
+    } catch (err) {
+        res.status(500).json({ error: 'Server error during login' });
+    }
+});
+
 module.exports = router;
