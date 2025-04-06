@@ -87,9 +87,14 @@ function MakeDonation() {
           <FormControl isRequired>
             <FormLabel>Food Category</FormLabel>
             <Select name="type" value={formData.type} onChange={handleChange}>
+              <option value="bakery">Bakery</option>
+              <option value="deli">Deli</option>
+              <option value="dairy&eggs">Dairy&Eggs</option>
               <option value="produce">Produce</option>
-              <option value="frozen">Frozen</option>
+              <option value="meat&seafood">Meat&Seafood</option>
               <option value="pantry">Pantry</option>
+              <option value="frozen">Frozen</option>
+              <option value="miscellaneous">Miscellaneous</option>
             </Select>
           </FormControl>
 

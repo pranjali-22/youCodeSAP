@@ -10,7 +10,6 @@ import RegisterDispatch from './pages/dispatch/RegisterDispatch.jsx';
 import DashBoardDispatch from './pages/dispatch/DashBoardDispatch.jsx';
 import DashBoardDonor from './pages/donor/DashBoardDonor.jsx';
 import MakeDonation from './pages/donor/MakeDonation.jsx';
-import DonationHistory from './pages/donor/DonationHistory.jsx';
 import Navbar from './components/Navbar.jsx';
 //var _s = $RefreshSig$();
 import { Box, Container, Heading, Input, Button, useToast, VStack, useColorModeValue } from "@chakra-ui/react";
@@ -33,7 +32,6 @@ function App() {
             <Route path="/registerDonor" element={<RegisterDonor />} /> 
             <Route path="/dashboardDispatch" element={<DashBoardDispatch />} /> 
             <Route path="/dashboardDonor" element={<DashBoardDonor />} />
-            <Route path="/DonationHistory" element={<DonationHistory />} />
             <Route path="/MakeDonation" element={<MakeDonation />} />
         </Routes>
       </Box>
